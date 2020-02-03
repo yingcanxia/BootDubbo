@@ -1,0 +1,14 @@
+使用dubbo是因为有服务治理需求
+
+
+总结：
+provider启动的时候：
+注册端口监听，注册服务地址到注册中心
+生成一个Invoker的代理类，代理服务端的实现
+wrapper对invoker进行包装比如filter进行一些过滤例如超时等
+
+消费端启动
+从注册中心获得url地址并生成invoker
+生成proxy代理类，生成一堆handler。directory今天太和动态，动态刷新目标服务地址的变化。还有mock，做服务降级以及测试通信
+在其中进行组装RpcInvocation，容错failover默认是重试，负载均衡loadbalance，路由等等最终筛选出唯一一个目标地址
+基于远程通信nettyClient
