@@ -19,6 +19,7 @@ import cn.shadow.api.SayHelloService;
  *
  */
 //@Service(loadbalance = "random",weight = 10,cluster = "failsafe")
+//@Service(export = false,delay = 10000)如果export是false的话则表明当前类不启动和加载，delay是否延迟启动防止启动是调用出错
 @Service(loadbalance = "random",weight = 10)
 public class SayHelloServiceImpl implements SayHelloService{
 
