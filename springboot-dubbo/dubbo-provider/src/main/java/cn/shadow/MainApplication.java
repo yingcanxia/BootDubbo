@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 服务的发布做了哪些事情
- * 1.基于spring解析配置文件并将其存储到config
+ * 1.基于spring解析配置、文件并将其存储到config
  * 2.逻辑判断保证配置信息的安全性
  * 3.组装URL(多种协议：dubbo,zookeeper,injvm等等)
  * 4.构建一个invoker(动态代理)
@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 8.启动一个nettyServer开始提供服务
  * 9.扩展点的依赖注入 
  * @author notto
- * 入口在ServiceBea n.onApplicationEvent()方法上
+ * 入口在ServiceBean.onApplicationEvent()方法上
  * 
  * 
  * 
