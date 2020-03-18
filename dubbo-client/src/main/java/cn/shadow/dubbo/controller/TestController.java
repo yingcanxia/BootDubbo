@@ -12,9 +12,12 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.shadow.api.SayHelloService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 /**
  * 配置优先级首先以客户端为准(service:服务级别;method：方法界别)-->service层
  * 
@@ -31,13 +34,15 @@ import cn.shadow.api.SayHelloService;
  * @author notto
  *
  */
-@RestController
 /**
  * 使用ReferenceBean
  * 实现以下接口FactoryBean, ApplicationContextAware, InitializingBean, DisposableBean 
  * @author notto
  *
  */
+@Api(description = "我的测试接口")
+@RestController
+@RequestMapping("/test")
 public class TestController {
  
 	//@Reference(loadbalance = "roundrobin",timeout = 2,cluster = "failfast",mock="某一个类的某一个类的相同方法",check = false)
@@ -54,7 +59,7 @@ public class TestController {
 	 */
 	@Reference(loadbalance = "roundrobin")
 	private SayHelloService sayHelloService;
-	
+	@ApiOperation(value = "测试helloWorld")
 	@GetMapping("/hello")
 	public String sayHello() {
 		/*
